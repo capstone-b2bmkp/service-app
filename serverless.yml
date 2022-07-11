@@ -1,0 +1,31 @@
+service: ${file(./package.json):name}
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-bundle
+  - serverless-prune-plugin
+  - serverless-step-functions
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
+  region: sa-east-1
+  memorySize: 1024
+  timeout: 30 # match HTTP timeout
+  logRetentionInDays: 14
+  apiGateway:
+    shouldStartNameWithService: true
+    minimumCompressionSize: 128 # compress responses over 128kb
+
+package:
+  exclude:
+    - node_modules/**
+
+functions: ${file(./serverless-config/functions.yml)}
+
+custom: ${file(./serverless-config/custom.yml)}

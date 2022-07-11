@@ -1,0 +1,14 @@
+package:
+  version: ${file(./package.json):version}
+  title: ${file(./package.json):name}
+
+serverless-offline:
+  allowCache: true
+
+prune:
+  automatic: true
+  number: 3
+
+bundle:
+  ignorePackages:
+    - pg-native
