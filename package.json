@@ -1,7 +1,7 @@
 {
-  "name": "user-api",
+  "name": "backend-b2b-mkp",
   "version": "1.0.0",
-  "description": "Pinflag User API",
+  "description": "Capstone Backend B2B Marketplace",
   "main": "index.js",
   "scripts": {
     "lint": "eslint src",
