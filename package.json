@@ -1,6 +1,6 @@
 {
-  "name": "backend-b2b-mkp",
-  "version": "1.0.0",
+  "name": "service-app",
+  "version": "0.1.0",
   "description": "Capstone Backend B2B Marketplace",
   "main": "index.js",
   "scripts": {
