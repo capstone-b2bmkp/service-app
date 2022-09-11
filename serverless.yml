@@ -1,6 +1,6 @@
 service: ${file(./package.json):name}
 
-frameworkVersion: '2'
+frameworkVersion: '3.22'
 
 plugins:
   - serverless-offline
