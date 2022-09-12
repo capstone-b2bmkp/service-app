@@ -4,6 +4,7 @@ const indexUser = async (req, res) => {
   console.log('estoy en indexUser controller')
 }
 
+// eslint-disable-next-line max-lines-per-function
 const createUser = async (req, res) => {
   console.log('estoy en createUser controller')
   const { name, password, email, phoneNumber, deliveryAddress, image, discount, admin } = req.body
@@ -17,14 +18,14 @@ const createUser = async (req, res) => {
       deliveryAddress,
       image,
       discount,
-      admin
+      isAdmin: admin
     })
     res.status(201).json({
       message: 'Usuario creado correctamente'
     })
   } catch (error) {
     res.status(500).json({
-      message: 'Las contraseñas no coinciden'
+      message: error.message
     })
   };
 }
