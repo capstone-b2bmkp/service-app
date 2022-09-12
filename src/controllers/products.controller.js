@@ -2,6 +2,10 @@ const { Product, User } = require('../models')
 
 const indexProduct = async (req, res) => {
   console.log('estoy en indexProduct controller')
+  // const { userId } = req.params;
+  const products = await Product.findAll()
+  console.log(products)
+  res.status(201).json({ data: products })
 }
 
 const createProduct = async (req, res) => {
