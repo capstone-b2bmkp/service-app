@@ -35,7 +35,19 @@ const updateUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-  console.log('estoy en deleteUser controller')
+  try {
+    const { id } = req.body
+    console.log('IDDDDDD:')
+    console.log(id)
+    await User.destroy({
+      where: { id: id }
+    })
+    res.status(200).send('Deleting a user!')
+  } catch (error) {
+    res.status(500).json({
+      message: 'No hemos podido eliminar al usuario'
+    })
+  };
 }
 
 module.exports = { indexUser, createUser, updateUser, deleteUser }
