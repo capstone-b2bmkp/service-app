@@ -16,10 +16,16 @@ module.exports = (sequelize, DataTypes) => {
         as: 'owner',
         onDelete: 'CASCADE'
       })
+      Product.hasMany(models.Comment, {
+        foreignKey: 'productId',
+        as: 'comments',
+        onDelete: 'CASCADE'
+      })
     }
   }
   Product.init({
     userId: DataTypes.INTEGER,
+    categoryId: DataTypes.INTEGER,
     name: DataTypes.STRING,
     currentPrice: DataTypes.INTEGER,
     currentAvailable: DataTypes.INTEGER,

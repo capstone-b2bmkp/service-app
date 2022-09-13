@@ -13,7 +13,14 @@ module.exports = {
         onDelete: 'CASCADE',
         references: {
           model: 'Users',
-          key: 'id',        
+          key: 'id'
+        }
+      },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id'
         }
       },
       name: {
