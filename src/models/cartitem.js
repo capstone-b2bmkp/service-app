@@ -11,9 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       // define association here
+      Cartitem.belongsTo(models.Cart, {
+        foreignKey: 'cartId',
+        as: 'cart',
+        onDelete: 'CASCADE'
+      })
+      Cartitem.belongsTo(models.Product, {
+        foreignKey: 'productId',
+        as: 'product',
+        onDelete: 'CASCADE'
+      })
     }
   }
   Cartitem.init({
+    cartId: DataTypes.INTEGER,
     productId: DataTypes.INTEGER,
     amount: DataTypes.INTEGER
   }, {
