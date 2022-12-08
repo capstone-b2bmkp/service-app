@@ -4,6 +4,7 @@ package:
 
 serverless-offline:
   allowCache: true
+  httpPort: 3001
 
 prune:
   automatic: true
@@ -12,3 +13,6 @@ prune:
 bundle:
   ignorePackages:
     - pg-native
+
+splitStacks:
+  perFunction: true

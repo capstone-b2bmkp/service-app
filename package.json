@@ -7,7 +7,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "start": "npm run lint && nodemon --exec sls offline start",
-    "test": "jest src/tests/ --detectOpenHandles --runInBand",
+    "test": "jest src/tests/ --detectOpenHandles --passWithNoTests --runInBand",
     "test:coverage": "jest src/tests/ --detectOpenHandles --runInBand --coverage",
     "deploy": "sls deploy --verbose"
   },
@@ -20,24 +20,28 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
     "faker": "^5.5.3",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.19",
     "serverless-bundle": "^5.1.0",
     "serverless-dotenv": "^1.0.0-beta.2",
     "serverless-dotenv-plugin": "^3.10.0",
     "serverless-offline": "^8.3.0",
-    "serverless-prune-plugin": "^1.6.1",
+    "serverless-plugin-split-stacks": "^1.12.0",
+    "serverless-prune-plugin": "^2.0.1",
     "serverless-step-functions": "^3.5.1"
   },
   "dependencies": {
-    "@vendia/serverless-express": "^4.10.1",
     "aws-sdk": "^2.1101.0",
     "axios": "^0.24.0",
-    "express": "^4.18.1",
-    "morgan": "^1.10.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.12.0-alpha.1",
+    "sequelize-cli": "^6.4.1",
     "serverless": "^3.22.0",
-    "serverless-http": "^3.0.2"
+    "serverless-http": "^3.0.2",
+    "transbank-sdk": "^4.0.0"
   }
 }
