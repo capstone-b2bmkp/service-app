@@ -1,7 +1,795 @@
-HelloWorld:
-  description: Hello world
-  handler: src/functions/hello_world/index.handler
-  events: 
+Auth:
+  handler: src/functions/auth/checkUser.handler
+  events:
     - http:
-        path: /hello-world
+        path: /auth
         method: post
+        cors: 
+          'origin': "*"
+
+CategoriesCreate:
+  handler: src/functions/categories/createCategory.handler
+  events:
+    - http:
+        path: /categories/
+        method: post
+        cors: 
+          'origin': "*"
+
+CategoriesDelete:
+  handler: src/functions/categories/deleteCategory.handler
+  events:
+    - http:
+        path: /categories/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+CategoriesIndex:
+  handler: src/functions/categories/indexCategory.handler
+  events:
+    - http:
+        path: /categories/
+        method: get
+        cors: 
+          'origin': "*"
+
+CategoriesIndexArray:
+  handler: src/functions/categories/indexArrayCategory.handler
+  events:
+    - http:
+        path: /categories/array
+        method: get
+        cors: 
+          'origin': "*"
+
+CategoriesUpdate:
+  handler: src/functions/categories/updateCategory.handler
+  events:
+    - http:
+        path: /categories/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+CategoriesShow:
+  handler: src/functions/categories/showCategory.handler
+  events:
+    - http:
+        path: /categories/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+CompaniesForCategories:
+  handler: src/functions/categories/showCompaniesForCategories.handler
+  events:
+    - http:
+        path: /categories/{id}/companies
+        method: get
+        cors: 
+          'origin': "*"
+
+CommentCreate:
+  handler: src/functions/comments/createComment.handler
+  events:
+    - http:
+        path: /comments/
+        method: post
+        cors: 
+          'origin': "*"
+
+CommentDelete:
+  handler: src/functions/comments/deleteComment.handler
+  events:
+    - http:
+        path: /comments/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+CommentIndex:
+  handler: src/functions/comments/indexComment.handler
+  events:
+    - http:
+        path: /comments/
+        method: get
+        cors: 
+          'origin': "*"
+
+CommentUpdate:
+  handler: src/functions/comments/updateComment.handler
+  events:
+    - http:
+        path: /comments/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+UserCreate:
+  handler: src/functions/users/createUser.handler
+  events:
+    - http:
+        path: /users/
+        method: post
+        cors: 
+          'origin': "*"
+
+UserDelete:
+  handler: src/functions/users/deleteUser.handler
+  events:
+    - http:
+        path: /users/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+UserIndex:
+  handler: src/functions/users/indexUser.handler
+  events:
+    - http:
+        path: /users/
+        method: get
+        cors: 
+          'origin': "*"
+
+UserUpdate:
+  handler: src/functions/users/updateUser.handler
+  events:
+    - http:
+        path: /users/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+UserShow:
+  handler: src/functions/users/showUser.handler
+  events:
+    - http:
+        path: /users/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductCreation:
+  handler: src/functions/products/createProduct.handler
+  events:
+    - http:
+        path: /products/
+        method: post
+        cors: 
+          'origin': "*"
+
+ProductDelete:
+  handler: src/functions/products/deleteProduct.handler
+  events:
+    - http:
+        path: /products/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+ProductIndex:
+  handler: src/functions/products/indexProduct.handler
+  events:
+    - http:
+        path: /products/
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductUpdate:
+  handler: src/functions/products/updateProduct.handler
+  events:
+    - http:
+        path: /products/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+ProductUpdateActive:
+  handler: src/functions/products/updateProductActive.handler
+  events:
+    - http:
+        path: /products/active/{id}
+        method: put
+        cors:
+          'origin': "*"
+
+ProductShow:
+  handler: src/functions/products/showProduct.handler
+  events:
+    - http:
+        path: /products/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductSearchBar:
+  handler: src/functions/products/searchBarProduct.handler
+  events:
+    - http:
+        path: /products/search/{name}
+        method: get
+        cors:
+          'origin': "*"
+
+ProductIndexForUser:
+  handler: src/functions/products/indexProductForUser.handler
+  events:
+    - http:
+        path: /products/users/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductIndexForCategory:
+  handler: src/functions/products/indexProductForCategory.handler
+  events:
+    - http:
+        path: /products/category/{categoryId}
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductVariationCreate:
+  handler: src/functions/productvariations/createProductVariation.handler
+  events:
+    - http:
+        path: /productvariations/
+        method: post
+        cors: 
+          'origin': "*"
+
+ProductVariationIndex:
+  handler: src/functions/productvariations/indexProductVariation.handler
+  events:
+    - http:
+        path: /productvariations/
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductVariationIndexForProduct:
+  handler: src/functions/productvariations/indexProductVariationForProduct.handler
+  events:
+    - http:
+        path: /productvariations/products/{productId}
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductVariationUpdate:
+  handler: src/functions/productvariations/updateProductVariation.handler
+  events:
+    - http:
+        path: /productvariations/{id}
+        method: put
+        cors:
+          'origin': "*"
+
+ProductVariationDelete:
+  handler: src/functions/productvariations/deleteProductVariation.handler
+  events:
+    - http:
+        path: /productvariations/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+ProductVariationOptions:
+  handler: src/functions/productvariations/optionsProductVariation.handler
+  events:
+    - http:
+        path: /productvariations/options
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductVariationShow:
+  handler: src/functions/productvariations/showProductVariation.handler
+  events:
+    - http:
+        path: /productvariations/show/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductFilterForCompany:
+  handler: src/functions/products/filterProductForCompany.handler
+  events:
+    - http:
+        path: /products/filter/company
+        method: post
+        cors:
+          'origin': "*"      
+
+ProductFilterForCategory:
+  handler: src/functions/products/filterProductForCategory.handler
+  events:
+    - http:
+        path: /products/filter/category
+        method: post
+        cors:
+          'origin': "*"
+
+ProductAttributes:
+  handler: src/functions/products/attributesProduct.handler
+  events:
+    - http:
+        path: /products/attributes
+        method: get
+        cors:
+          'origin': "*"
+
+PurchaseCreate:
+  handler: src/functions/purchases/createPurchase.handler
+  events:
+    - http:
+        path: /purchases/
+        method: post
+        cors: 
+          'origin': "*"
+
+PurchaseDelete:
+  handler: src/functions/purchases/deletePurchase.handler
+  events:
+    - http:
+        path: /purchases/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+PurchaseIndex:
+  handler: src/functions/purchases/indexPurchase.handler
+  events:
+    - http:
+        path: /purchases/
+        method: get
+        cors: 
+          'origin': "*"
+
+PurchaseUpdate:
+  handler: src/functions/purchases/updatePurchase.handler
+  events:
+    - http:
+        path: /purchases/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+PurchasesShowWithCompany:
+  handler: src/functions/purchases/showPurchasesWithCompany.handler
+  events:
+    - http:
+        path: /purchases/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+PurchasesShowForCompany:
+  handler: src/functions/purchases/showPurchasesForCompany.handler
+  events:
+    - http:
+        path: /purchases/company/{companyId}
+        method: get
+        cors:
+          'origin': "*"
+
+PurchaseShowForSellerUser:
+  handler: src/functions/purchases/showPurchasesForSellerUser.handler
+  events:
+    - http:
+        path: /purchases/selleruser/{id}
+        method: get
+        cors:
+          'origin': "*"
+
+PurchaseShowForSellerCompany:
+  handler: src/functions/purchases/showPurchasesForSellerCompany.handler
+  events:
+    - http:
+        path: /purchases/sellercompany/{id}
+        method: get
+        cors:
+          'origin': "*"
+
+PurchaseItemsForPurchase:
+  handler: src/functions/purchaseitems/indexPurchaseItemsForPurchase.handler
+  events:
+    - http:
+        path: /purchaseitems/{purchaseId}
+        method: get
+        cors:
+          'origin': "*"
+
+CompanyCreate:
+  handler: src/functions/companies/createCompany.handler
+  events:
+    - http:
+        path: /companies/
+        method: post
+        cors: 
+          'origin': "*"
+
+CompanyDelete:
+  handler: src/functions/companies/deleteCompany.handler
+  events:
+    - http:
+        path: /companies/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+CompanyIndex:
+  handler: src/functions/companies/indexCompany.handler
+  events:
+    - http:
+        path: /companies/
+        method: get
+        cors: 
+          'origin': "*"
+
+CompanyUpdate:
+  handler: src/functions/companies/updateCompany.handler
+  events:
+    - http:
+        path: /companies/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+CompanyShow:
+  handler: src/functions/companies/showCompany.handler
+  events:
+    - http:
+        path: /companies/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+CompaniesWithProductsShow:
+  handler: src/functions/companies/showCompaniesWithProducts.handler
+  events:
+    - http:
+        path: /companies/all/
+        method: get
+        cors: 
+          'origin': "*"
+
+ProductsForCompany:
+  handler: src/functions/companies/showProductsForCompany.handler
+  events:
+    - http:
+        path: /companies/{id}/products
+        method: get
+        cors: 
+          'origin': "*"
+
+UserIndexForCompany:
+  handler: src/functions/companies/indexUserForCompany.handler
+  events:
+    - http:
+        path: /companies/{id}/users
+        method: get
+        cors: 
+          'origin': "*"
+
+AffiliationcodeCreate:
+  handler: src/functions/affiliationcodes/createAffiliationcode.handler
+  events:
+    - http:
+        path: /affiliationcodes/{companyId}
+        method: post
+        cors: 
+          'origin': "*"
+
+AffiliationcodeIndexForCompany:
+  handler: src/functions/affiliationcodes/indexAffiliationcodeForCompany.handler
+  events:
+    - http:
+        path: /affiliationcodes/{companyId}
+        method: get
+        cors: 
+          'origin': "*"
+
+ValidatedCompaniesIndex:
+  handler: src/functions/validatedcompanies/indexValidatedcompanies.handler
+  events:
+    - http:
+        path: /validatedcompanies/
+        method: get
+        cors: 
+          'origin': "*"
+
+ValidatedCompaniesUpdate:
+  handler: src/functions/validatedcompanies/updateValidatedcompanies.handler
+  events:
+    - http:
+        path: /validatedcompanies/{companyId}
+        method: PUT
+        cors: 
+          'origin': "*"
+
+ProductIndexForCompany:
+  handler: src/functions/products/indexProductForCompany.handler
+  events:
+    - http:
+        path: /products/companies/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+DiscountruleShow:
+  handler: src/functions/discountrules/showDiscountrule.handler
+  events:
+    - http:
+        path: /discountrules/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+DiscountruleCreate:
+  handler: src/functions/discountrules/createDiscountrule.handler
+  events:
+    - http:
+        path: /discountrules/
+        method: post
+        cors: 
+          'origin': "*"
+
+DiscountruleDelete:
+  handler: src/functions/discountrules/deleteDiscountrule.handler
+  events:
+    - http:
+        path: /discountrules/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+CartitemDelete:
+  handler: src/functions/cartitems/deleteCartitem.handler
+  events:
+    - http:
+        path: /cartitems/{userId}/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+DiscountruleIndex:
+  handler: src/functions/discountrules/indexDiscountrule.handler
+  events:
+    - http:
+        path: /discountrules/
+        method: get
+        cors: 
+          'origin': "*"
+
+CartitemIndex:
+  handler: src/functions/cartitems/indexCartitem.handler
+  events:
+    - http:
+        path: /cartitems/{userId}
+        method: get
+        cors: 
+          'origin': "*"
+
+
+DiscountruleUpdate:
+  handler: src/functions/discountrules/updateDiscountrule.handler
+  events:
+    - http:
+        path: /discountrules/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+CartitemCreate:
+  handler: src/functions/cartitems/createCartitem.handler
+  events:
+    - http:
+        path: /cartitems/
+        method: post
+        cors: 
+          'origin': "*"
+
+
+TransactionCreate:
+  handler: src/functions/purchases/transactions/createTransaction.handler
+  events:
+    - http:
+        path: /purchases/{id}/transactions/create
+        method: post
+        cors: 
+          'origin': "*"
+        
+
+uploadS3Url:
+  handler: src/functions/s3/uploadUrl.handler
+  events:
+    - http:
+        path: /uploadUrl/
+        method: post
+        cors: 
+          'origin': "*"
+
+uploadS3Pdf:
+  handler: src/functions/s3/uploadPdf.handler
+  events:
+    - http:
+        path: /uploadPdf/
+        method: post
+        cors: 
+          'origin': "*"
+
+
+TransactionCommit:
+  handler: src/functions/purchases/transactions/commitTransaction.handler
+  events:
+    - http:
+        path: /purchases/{id}/transactions/commit
+        method: post
+        cors: 
+          'origin': "*"
+
+DirectionCreate:
+  handler: src/functions/directions/createDirection.handler
+  events:
+    - http:
+        path: /directions
+        method: post
+        cors: 
+          'origin': "*"
+
+DirectionShow:
+  handler: src/functions/directions/showDirection.handler
+  events:
+    - http:
+        path: /directions/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+DeliveryForPurchaseShow:
+  handler: src/functions/deliveries/showDeliveryForPurchase.handler
+  events:
+    - http:
+        path: /deliveries/{purchaseId}
+        method: get
+        cors:
+          'origin': "*"
+
+InvoiceForPurchaseShow:
+  handler: src/functions/invoices/showInvoiceForPurchase.handler
+  events:
+    - http:
+        path: /invoices/{purchaseId}
+        method: get
+        cors:
+          'origin': "*"
+
+QuoterpurchaseForPurchaseShow:
+  handler: src/functions/quoterpurchases/showQuoterpurchaseForPurchase.handler
+  events:
+    - http:
+        path: /quoterpurchases/{purchaseId}
+        method: get
+        cors:
+          'origin': "*"
+
+IndexQuoterpurchase:
+  handler: src/functions/quoterpurchases/indexQuoterpurchase.handler
+  events:
+    - http:
+        path: /quoterpurchases/
+        method: get
+        cors:
+          'origin': "*"
+          
+CreditlineShow:
+  handler: src/functions/creditlines/showCreditline.handler
+  events:
+    - http:
+        path: /creditlines/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+CreditlineCreate:
+  handler: src/functions/creditlines/createCreditline.handler
+  events:
+    - http:
+        path: /creditlines/
+        method: post
+        cors: 
+          'origin': "*"
+
+CreditlineUpdate:
+  handler: src/functions/creditlines/updateCreditline.handler
+  events:
+    - http:
+        path: /creditlines/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+CreditlineDelete:
+  handler: src/functions/creditlines/deleteCreditline.handler
+  events:
+    - http:
+        path: /creditlines/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+CreditlineIndexForCompany:
+  handler: src/functions/creditlines/indexCreditlineForCompany.handler
+  events:
+    - http:
+        path: /creditlines/companies/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+CreditlineIndexForBuyer:
+  handler: src/functions/creditlines/indexCreditlineForBuyer.handler
+  events:
+    - http:
+        path: /creditlines/buyers/{id}
+        method: get
+        cors: 
+          'origin': "*"
+
+FileForInvoice:
+  handler: src/functions/invoices/invoiceFile.handler
+  events:
+    - http:
+        path: /invoice/setFile
+        method: post
+        cors:
+          'origin': "*"
+
+ColorvariationCreate:
+  handler: src/functions/colorvariations/createColorvariation.handler
+  events:
+    - http:
+        path: /colorvariations/
+        method: post
+        cors: 
+          'origin': "*"
+
+ColorvariationUpdate:
+  handler: src/functions/colorvariations/updateColorvariation.handler
+  events:
+    - http:
+        path: /colorvariations/{id}
+        method: put
+        cors: 
+          'origin': "*"
+
+ColorvariationDelete:
+  handler: src/functions/colorvariations/deleteColorvariation.handler
+  events:
+    - http:
+        path: /colorvariations/{id}
+        method: delete
+        cors: 
+          'origin': "*"
+
+ColorvariationIndex:
+  handler: src/functions/colorvariations/indexColorvariation.handler
+  events:
+    - http:
+        path: /colorvariations/{id}
+        method: get
+        cors: 
+          'origin': "*"
+          
+CartitemsDelete:
+  handler: src/functions/cartitems/deleteCartItems.handler
+  events:
+    - http:
+        path: /cartitems/{userId}
+        method: delete
+        cors: 
+          'origin': "*"

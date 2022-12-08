@@ -1,6 +1,6 @@
 service: ${file(./package.json):name}
 
-frameworkVersion: '2'
+frameworkVersion: '*'
 
 plugins:
   - serverless-offline
@@ -8,10 +8,10 @@ plugins:
   - serverless-bundle
   - serverless-prune-plugin
   - serverless-step-functions
-
+  - serverless-plugin-split-stacks
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   lambdaHashingVersion: 20201221
   stage: ${opt:stage, 'dev'}
   region: sa-east-1
@@ -22,10 +22,40 @@ provider:
     shouldStartNameWithService: true
     minimumCompressionSize: 128 # compress responses over 128kb
 
+  environment:
+    SECRET_KEY: ${env:SECRET_KEY, ""} 
+    AWS_ACCESS_KEY_IDP: ${env:AWS_ACCESS_KEY_ID, ""}
+    AWS_SECRET_ACCESS_KEYP: ${env:AWS_SECRET_ACCESS_KEY, ""}
+    DATABASE_USERNAME_DEV: ${env:DATABASE_USERNAME_DEV, ""} 
+    DATABASE_PASSWORD_DEV: ${env:DATABASE_PASSWORD_DEV, ""} 
+    DATABASE_NAME_DEV: ${env:DATABASE_NAME_DEV, ""} 
+    DATABASE_HOST_DEV: ${env:DATABASE_HOST_DEV, ""} 
+    DATABASE_PORT_DEV: ${env:DATABASE_PORT_DEV, ""} 
+    DATABASE_USERNAME: ${env:DATABASE_USERNAME, ""} 
+    DATABASE_PASSWORD: ${env:DATABASE_PASSWORD, ""} 
+    DATABASE_NAME: ${env:DATABASE_NAME, ""} 
+    DATABASE_HOST: ${env:DATABASE_HOST, ""} 
+    DATABASE_PORT: ${env:DATABASE_PORT, ""}
+    BUCKET_NAME: ${env:BUCKET_NAME, ""}
+    NODE_ENV: ${env:NODE_ENV, ""}
+
 package:
+  individually: true
   exclude:
     - node_modules/**
 
 functions: ${file(./serverless-config/functions.yml)}
 
 custom: ${file(./serverless-config/custom.yml)}
+
+resources:
+  Resources:
+    GatewayResponseDefault4XX:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'

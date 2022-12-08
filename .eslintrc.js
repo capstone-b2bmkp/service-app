@@ -12,33 +12,36 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    'no-unused-vars': 'off',
     'jest/no-disabled-tests': 'error',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'error',
     'jest/valid-expect': 'error',
     'no-use-before-define': 'error',
-    camelcase: 'error',
     curly: 'error',
     eqeqeq: 'error',
     'func-names': 'error',
-    'complexity': ['warn', 5],
-    'max-lines-per-function': ['warn', { 'max': 15, 'skipBlankLines': true }],
-    'max-statements': ['warn', 10],
+    // cambié de 5 a 20
+    'complexity': ['warn', 20],
+    // cambié de 50 a 200
+    'max-lines-per-function': ['warn', { 'max': 200, 'skipBlankLines': true }],
+    // cambié de 10 a 40
+    'max-statements': ['warn', 40],
     'max-params': ['warn', 5],
-    'no-console': 'warn',
+    // 'no-console': 'warn',
     'no-alert': 'error',
     'no-else-return': 'error',
     'no-empty-function': 'error',
     'no-inline-comments': 'error',
     'no-return-await': 'error',
     'no-return-assign': 'error',
-    'no-unused-expressions': 'error',
     'no-useless-return': 'error',
     'no-var': 'error',
     'prefer-const': 'error',
     'no-trailing-spaces': 'error',
     quotes: ['error', 'single'],
+    semi: ['error', 'always'],
     'max-len': [
       'error',
       {

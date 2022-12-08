@@ -9,12 +9,17 @@ on:
 jobs:
   pull_request_checks:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
       - name: Check out code
         uses: actions/checkout@v2
 
       - name: Set up node 
         uses: actions/setup-node@v1
+        with:
+          node-version: 16
 
       - name: Install dependencies
         run: npm install
